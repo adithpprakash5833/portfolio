@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Adith P.Prakash</title>
+  <style>
+    body {
+     font-family: Arial, sans-serif; margin: 0; line-height: 1.6; }
+    header { background: #2b4eff; color: white; padding: 2rem; text-align: center; }
+    nav a { margin: 0 1rem; color: white; text-decoration: none; }
+    section { padding: 2rem; max-width: 900px; margin: auto; }
+    .projects { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); }
+    footer { background:#f0f0f0; text-align:center; padding:1rem; 
+      font-family: Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #f0f4ff, #e6faff);
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(90deg, #2b4eff, #5c78ff);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffeb7a;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: filter 0.4s ease, transform 0.3s ease;
+    }
+    section.active {
+      filter: brightness(1) blur(0);
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    section.inactive {
+      filter: blur(2px) brightness(0.8);
+    }
+    .projects {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    }
+    footer {
+      background:#2b4eff;
+      text-align:center;
+      padding:1rem;
+      color:white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Adith P.Prakash</h1>
+  <p>A Computer Applications Student</p>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#activities">Activities</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I’m Adith P. Prakash, an undergraduate student in Computer Applications with a keen interest in web development and problem-solving. I enjoy exploring new technologies, building creative projects, and collaborating with peers to learn and grow. My goal is to strengthen my programming skills and work on impactful software solutions that make everyday life easier.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li>BCA, BVM Holy Cross College Cherpunkal, 2022-25</li>
+    <li>Higher Secondary – St,mary's HSS Manarcadu, 2020-22</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div>
+      <h3>Academic Vault</h3>
+      <p>A modern platform designed to simplify and speed up access to academic resources for students and faculty. The system integrates a user-friendly interface with efficient search and retrieval tools, ensuring quick, transparent access to study materials.</p>
+    </div>
+    <div>
+      <h3>City Cab</h3>
+      <p>City Cab is a user-friendly taxi booking platform designed to simplify driver hiring and scheduling. Customers can choose the date, time, pickup and drop-off points, and vehicle type—or use their own car with a hired driver. The system integrates a secure payment gateway, driver verification, and ratings to enhance service quality.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills & Certificates</h2>
+  <ul>
+    <li>Python</li>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>C</li>
+    <li>C++</li>
+    <li>Java</li>
+  </ul>
+</section>
+
+<section id="activities">
+  <h2>Activities</h2>
+  <p>Clubs, events, volunteering…</p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="">Adithpprakash5833@gmail.com</a></p>
+  <p><a href="https://www.linkedin.com/in/adith-p-prakash-4ab81530b">LinkedIn</a> | <a href="https://github.com/adithpprakash5833">GitHub</a></p>
+</section>
+
+<footer>
+  &copy; 2025 Adith P.Prakash. All rights reserved.
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  const headerHeight = document.querySelector('header').offsetHeight; // height of header
+
+  // highlight clicked section & blur others
+  function setActive(id) {
+    sections.forEach(sec => {
+      sec.classList.remove('active', 'inactive');
+      if (sec.id === id) {
+        sec.classList.add('active');
+      } else {
+        sec.classList.add('inactive');
+      }
+    });
+  }
+
+  // handle nav clicks
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault(); // stop instant jump
+      const targetId = link.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        // calculate exact position minus header height
+        const y = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        setActive(targetId);
+      }
+    });
+  });
+
+  // Default: all clear (no blur) on first load
+  sections.forEach(sec => sec.classList.remove('inactive', 'active'));
+</script>
+
+
+</body>
+</html>
