@@ -1,180 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Adith P.Prakash</title>
-  <style>
-    body {
-     font-family: Arial, sans-serif; margin: 0; line-height: 1.6; }
-    header { background: #2b4eff; color: white; padding: 2rem; text-align: center; }
-    nav a { margin: 0 1rem; color: white; text-decoration: none; }
-    section { padding: 2rem; max-width: 900px; margin: auto; }
-    .projects { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); }
-    footer { background:#f0f0f0; text-align:center; padding:1rem; 
-      font-family: Arial, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      background: linear-gradient(135deg, #f0f4ff, #e6faff);
-      scroll-behavior: smooth;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adith | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:#f4f6f8;color:#333;transition:0.3s;}
+
+body.dark{background:#121212;color:#eee;}
+
+/* NAVBAR */
+header{
+    position:fixed;top:0;width:100%;
+    background:#111;padding:15px 40px;z-index:1000;
+}
+nav{display:flex;justify-content:space-between;align-items:center;}
+.logo{color:#00adb5;font-size:24px;font-weight:600;}
+nav ul{display:flex;list-style:none;}
+nav ul li{margin-left:25px;}
+nav ul li a{text-decoration:none;color:#fff;transition:0.3s;}
+nav ul li a:hover{color:#00adb5;}
+
+.menu-btn{display:none;color:white;font-size:22px;cursor:pointer;}
+.dark-btn{
+    background:#00adb5;color:#fff;border:none;
+    padding:6px 12px;border-radius:20px;cursor:pointer;margin-left:-500px;
+}
+
+/* SECTIONS */
+section{
+    min-height:100vh;
+    padding:100px 10%;
+    display:flex;align-items:center;
+}
+section h2{margin-bottom:15px;}
+
+/* HOME */
+#home{
+    background:linear-gradient(135deg,#00adb5,#393e46);
+    color:white;text-align:center;flex-direction:column;justify-content:center;
+}
+#home h1{font-size:3rem;}
+#home p{margin:15px 0;max-width:600px;}
+
+.btn{
+    padding:10px 25px;background:#fff;color:#00adb5;
+    border-radius:25px;text-decoration:none;font-weight:600;
+    margin:10px;display:inline-block;
+}
+
+/* ABOUT */
+#about{background:#fff;}
+body.dark #about{background:#1e1e1e;}
+
+/* SKILLS */
+#skills{background:#eeeeee;}
+body.dark #skills{background:#1a1a1a;}
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;width:100%;
+}
+.skill-box{
+    background:white;padding:20px;border-radius:10px;
+    text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+.skill-box:hover{transform:scale(1.05);}
+body.dark .skill-box{background:#2a2a2a;color:white;}
+
+/* PROJECTS */
+#projects{background:#eeeeee;}
+body.dark #projects{background:#1a1a1a;}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;width:100%;
+}
+.project-card{
+    background:#fff;padding:20px;border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.project-card h3{color:#00adb5;margin-bottom:10px;}
+.project-card a{
+    text-decoration:none;color:#00adb5;font-weight:600;
+}
+body.dark .project-card{background:#2a2a2a;color:white;}
+
+/* CONTACT */
+#contact{background:#fff;flex-direction:column;}
+body.dark #contact{background:#1e1e1e;}
+
+.contact-info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    width:100%;
+    margin-top:20px;
+}
+
+.contact-card{
+    background:#f4f6f8;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    transition:0.3s;
+}
+.contact-card a{
+    text-decoration:none;
+    color:#00adb5;
+    font-weight:600;
+}
+.contact-card:hover{transform:translateY(-5px);}
+body.dark .contact-card{background:#2a2a2a;color:white;}
+
+/* FOOTER */
+footer{text-align:center;padding:15px;background:#111;color:white;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    nav ul{
+        flex-direction:column;background:#111;
+        position:absolute;top:60px;right:0;
+        width:220px;display:none;padding:15px;
     }
-    header {
-      background: linear-gradient(90deg, #59ff2b, #5ce9ff);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      margin: 0 1rem;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffeb7a;
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: 2rem auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-      transition: filter 0.4s ease, transform 0.3s ease;
-    }
-    section.active {
-      filter: brightness(1) blur(0);
-      transform: scale(1.02);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-    section.inactive {
-      filter: blur(2px) brightness(0.8);
-    }
-    .projects {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    }
-    footer {
-      background:#3ce60d;
-      text-align:center;
-      padding:1rem;
-      color:white;
-      margin-top: 2rem;
-    
-    }
-    section { max-width: 90%; margin: 2rem auto; }
-    
-  </style>
+    nav ul.show{display:block;}
+    .menu-btn{display:block;}
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Adith P.Prakash</h1>
-  <p>A Computer Applications Student</p>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#activities">Activities</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<nav>
+    <div class="logo"></div>
+    <div>
+        <button class="dark-btn" onclick="toggleDark()">🌙</button>
+        <span class="menu-btn" onclick="toggleMenu()">☰</span>
+    </div>
+    <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 </header>
 
+<!-- HOME -->
+<section id="home">
+    <h1>Hello, I'm Adith</h1>
+    <p>MCA student & aspiring full-stack developer passionate about building modern web applications.</p>
+    <a href="#contact" class="btn">Hire Me</a>
+    <a href="Adith_P_Prakash_Resume.pdf" class="btn" download>Download Resume</a>
+</section>
+
+<!-- ABOUT -->
 <section id="about">
-  <h2>About Me</h2>
-  <p>I’m Adith P. Prakash, an undergraduate student in Computer Applications with a keen interest in web development and problem-solving. I enjoy exploring new technologies, building creative projects, and collaborating with peers to learn and grow. My goal is to strengthen my programming skills and work on impactful software solutions that make everyday life easier.</p>
-</section>
-
-<section id="education">
-  <h2>Education</h2>
-  <ul>
-    <li>BCA, BVM Holy Cross College Cherpunkal, 2022-25</li>
-    <li>Higher Secondary – St,mary's HSS Manarcadu, 2020-22</li>
-  </ul>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="projects">
     <div>
-      <h3>Academic Vault</h3>
-      <p>A modern platform designed to simplify and speed up access to academic resources for students and faculty. The system integrates a user-friendly interface with efficient search and retrieval tools, ensuring quick, transparent access to study materials.</p>
+        <h2>About Me</h2>
+        <p>
+            I am an MCA student with strong interest in web development, Python, Django, and modern UI design.
+            I enjoy creating clean, responsive, and user-friendly applications.
+        </p>
     </div>
-    <div>
-      <h3>City Cab</h3>
-      <p>City Cab is a user-friendly taxi booking platform designed to simplify driver hiring and scheduling. Customers can choose the date, time, pickup and drop-off points, and vehicle type—or use their own car with a hired driver. The system integrates a secure payment gateway, driver verification, and ratings to enhance service quality.</p>
-    </div>
-  </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
-  <h2>Skills & Certificates</h2>
-  <ul>
-    <li>Python</li>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>C</li>
-    <li>C++</li>
-    <li>Java</li>
-  </ul>
+    <div>
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill-box">HTML</div>
+            <div class="skill-box">CSS</div>
+            <div class="skill-box">JavaScript</div>
+            <div class="skill-box">Python</div>
+            <div class="skill-box">Django</div>
+            <div class="skill-box">MySQL</div>
+        </div>
+    </div>
 </section>
 
-<section id="activities">
-  <h2>Activities</h2>
-  <p>Clubs, events, volunteering…</p>
+<!-- PROJECTS -->
+<section id="projects">
+    <div>
+        <h2>My Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Academic Vault</h3>
+                <p>A modern platform designed to simplify and speed up access to academic resources for students and faculty. The system integrates a user-friendly interface with efficient search and retrieval tools, ensuring quick, transparent access to study materials.</p>
+                <!-- <a href="https://github.com/YOUR_GITHUB/academic-vault" target="_blank">GitHub →</a> -->
+            </div>
+
+            <div class="project-card">
+                <h3>City Cab</h3>
+                <p>City Cab is a user-friendly taxi booking platform designed to simplify driver hiring and scheduling. Customers can choose the date, time, pickup and drop-off points, and vehicle type or use their own car with a hired driver. The system integrates a secure payment gateway, driver verification, and ratings to enhance service quality.</p>
+                <!-- <a href="https://github.com/YOUR_GITHUB/city-cab" target="_blank">GitHub →</a> -->
+            </div>
+        </div>
+    </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="">Adithpprakash5833@gmail.com</a></p>
-  <p><a href="https://www.linkedin.com/in/adith-p-prakash-4ab81530b">LinkedIn</a> | <a href="https://github.com/adithpprakash5833">GitHub</a></p>
+    <h2>Contact Me</h2>
+
+    <div class="contact-info">
+        <div class="contact-card">
+            <h3>Email</h3>
+            <a href="Adithpprakash5833@gmail.com">Adithpprakash5833@gmail.com</a>
+        </div>
+
+        <div class="contact-card">
+            
+            <a href="https://www.linkedin.com/in/adith-p-prakash-4ab81530b" target="_blank">
+                LinkedIn
+            </a>
+        </div>
+
+        <div class="contact-card">
+            
+            <a href="https://github.com/adithpprakash5833" target="_blank">
+                GitHub
+            </a>
+        </div>
+    </div>
 </section>
 
 <footer>
-  &copy; 2025 Adith P.Prakash. All rights reserved.
+© 2026 | Adith P. Prakash. All rights reserved.
 </footer>
 
 <script>
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('nav a');
-  const headerHeight = document.querySelector('header').offsetHeight; // height of header
+const body = document.body;
+const themeBtn = document.querySelector(".dark-btn");
 
-  // highlight clicked section & blur others
-  function setActive(id) {
-    sections.forEach(sec => {
-      sec.classList.remove('active', 'inactive');
-      if (sec.id === id) {
-        sec.classList.add('active');
-      } else {
-        sec.classList.add('inactive');
-      }
-    });
-  }
+/* Load saved theme */
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark");
+    themeBtn.innerHTML = "☀️";
+} else {
+    themeBtn.innerHTML = "🌙";
+}
 
-  // handle nav clicks
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault(); // stop instant jump
-      const targetId = link.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
+/* Toggle Menu */
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("show");
+}
 
-      if (targetSection) {
-        // calculate exact position minus header height
-        const y = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        setActive(targetId);
-      }
-    });
-  });
+/* Toggle Dark / Light Mode */
+function toggleDark(){
+    body.classList.toggle("dark");
 
-  // Default: all clear (no blur) on first load
-  sections.forEach(sec => sec.classList.remove('inactive', 'active'));
+    if (body.classList.contains("dark")) {
+        themeBtn.innerHTML = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        themeBtn.innerHTML = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+}
 </script>
 
 
